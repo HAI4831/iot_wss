@@ -1,0 +1,64 @@
+body {
+    background-color: #f4f4f9;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    padding-top: 20px;
+}
+
+#main-content {
+    margin-top: 20px;
+}
+
+.form-inline {
+    display: block;
+}
+
+.form-group label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+button {
+    margin-top: 10px;
+}
+
+#connect, #disconnect, #send {
+    margin-top: 10px;
+}
+
+#conversation {
+    margin-top: 20px;
+}
+
+#conversation th {
+    background-color: #2196F3;
+    color: white;
+    font-size: 18px;
+    padding: 15px;
+}
+
+#conversation td {
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #fafafa;
+    border-bottom: 1px solid #ddd;
+}
+
+#conversation tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+#conversation tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table-striped {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#MoveControl td {
+    font-size: 16px;
+    padding: 8px;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Action Move</title>
+    <script src="action.js" defer></script>
+</head>
+<body>
+<h1>Action Move</h1>
+
+<!-- Form with POST method and action URL for handling submission -->
+<form id="actionForm">
+    <label for="actionMoveName">Choose Action:</label>
+    <select id="actionMoveName" name="actionMoveName">
+        <option value="FORWARD">Forward</option>
+        <option value="BACKWARD">Backward</option>
+        <option value="LEFT">Left</option>
+        <option value="RIGHT">Right</option>
+        <option value="STOP">Stop</option>
+    </select>
+
+    <label for="speed">Speed:</label>
+    <input type="number" id="speed" name="speed" required>
+
+    <button type="submit">Submit</button>
+</form>
+
+<h2>Existing Actions</h2>
+<div id="actionList">
+    <ul>
+        <li th:each="action : ${actionMoves}">
+            <span th:text="'Action: ' + ${action.actionMoveName} + ', Speed: ' + ${action.speed}"></span>
+        </li>
+    </ul>
+</div>
+
+<script>
+    document.getElementById('actionForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const actionMoveName = document.getElementById('actionMoveName').value;
+        const speed = document.getElementById('speed').value;
+
+        const moveRequest = {
+            actionMoveName: actionMoveName,
+            speed: parseInt(speed)
+        };
+
+        fetch('/action', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(moveRequest)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                alert('Action move created successfully');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+</script>
+
+</body>
+</html>
